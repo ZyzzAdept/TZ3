@@ -27,8 +27,8 @@ jobs:
       run: python stress.py
     - uses: actions/upload-artifact@v2
       with:
-        name: test_chart.png
-        path: outputs/chart.png
+        name: test_chart
+        path: outputs
       
         
         
