@@ -59,7 +59,7 @@ jobs:
           
           Test of numbers multiply result: ${{ steps.test_mult.outcome }}
 
-          Stress test: ${{ steps.test_stress.outcome }}
+          Stress test result: ${{ steps.test_stress.outcome }}
 
           Download stress test chart: 
           https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
