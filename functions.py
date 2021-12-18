@@ -64,6 +64,3 @@ def numbers_multiply(number_list):
             print("Ошибка переполнения")
             sys.exit(1)
     return multiply_value
-
-
-print(open_file("file.txt"))
