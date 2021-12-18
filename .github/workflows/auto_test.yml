@@ -24,4 +24,11 @@ jobs:
     - name: Test with pytest
       run: python -m pytest tests/
     - name: Stress Test with stress.py
-      run: python stress_test.py
+      run: python stress.py
+    - uses: actions/upload-artifact@v2
+      with:
+        name: test_chart.png
+        path: outputs
+      
+        
+        
