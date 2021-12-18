@@ -37,6 +37,10 @@ jobs:
       continue-on-error: true
       id: test_mult
       run: python -m pytest tests/test_multiply_func.py
+    - name: Test file open
+      continue-on-error: true
+      id: test_file
+      run: python -m pytest tests/test_open_file.py
     - name: Stress Test
       continue-on-error: true
       id: test_stress
@@ -58,6 +62,8 @@ jobs:
           Test of numbers sum result: ${{ steps.test_sum.outcome }}
           
           Test of numbers multiply result: ${{ steps.test_mult.outcome }}
+          
+          Test of file open result: ${{ steps.test_file.outcome }}
 
           Stress test result: ${{ steps.test_stress.outcome }}
 
