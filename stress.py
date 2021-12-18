@@ -1,7 +1,6 @@
 from functions import minimum_number, maximum_number, sum_of_numbers, numbers_multiply, open_file
 import random
 import time
-from datetime import datetime
 import matplotlib.pyplot as plt
 
 
