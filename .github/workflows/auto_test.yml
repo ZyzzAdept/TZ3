@@ -21,14 +21,45 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest
         pip install -r requirements.txt
-    - name: Test with pytest
-      run: python -m pytest tests/
-    - name: Stress Test with stress.py
+    - name: Test min num
+      continue-on-error: true
+      id: test_min
+      run: python -m pytest tests/test_min_func.py
+    - name: Test max num
+      continue-on-error: true
+      id: test_max
+      run: python -m pytest tests/test_max_func.py
+    - name: Test sum of nums
+      continue-on-error: true
+      id: test_sum
+      run: python -m pytest tests/test_sum_func.py
+    - name: Test multiply on nums
+      continue-on-error: true
+      id: test_mult
+      run: python -m pytest tests/test_multiply_func.py
+    - name: Stress Test
+      continue-on-error: true
+      id: test_stress
       run: python stress.py
     - uses: actions/upload-artifact@v2
       with:
         name: test_chart.png
-        path: outputs
-      
-        
-        
+        path: outputs/chart.png
+    - name: Send tests results to Telegram
+      uses: appleboy/telegram-action@master
+      with:
+        to: "-1001789202608"
+        token: "5006828342:AAFHiHZnw27Pz3Bbd0LytWFRN6tvJp1e-mg"
+        message: |
+          Test of min number result: ${{ steps.test_min.outcome }}
+
+          Test of max number result: ${{ steps.test_max.outcome }}
+
+          Test of numbers sum result: ${{ steps.test_sum.outcome }}
+          
+          Test of numbers multiply result: ${{ steps.test_mult.outcome }}
+
+          Stress test result: ${{ steps.test_stress.outcome }}
+
+          Download stress test chart: 
+          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
