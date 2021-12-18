@@ -21,11 +21,12 @@ def open_file(file_name):
                     print("Файл должен содержать только числа и пробелы")
                     sys.exit(1)
                 number_str = ""
-        try:
-            int_number_list.append(float(number_str))
-        except ValueError:
-            print("Файл должен содержать только числа и пробелы")
-            sys.exit(1)
+        if number_str != "":
+            try:
+                int_number_list.append(float(number_str))
+            except ValueError:
+                print("Файл должен содержать только числа и пробелы")
+                sys.exit(1)
     return int_number_list
 
 
@@ -64,4 +65,5 @@ def numbers_multiply(number_list):
             sys.exit(1)
     return multiply_value
 
-print(open_file("open_file_test.txt"))
+
+print(open_file("file.txt"))
