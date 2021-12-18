@@ -22,6 +22,6 @@ jobs:
         python -m pip install flake8 pytest
         pip install -r requirements.txt
     - name: Test with pytest
-      run: pytest
-    - name: Stress Test with stress_test.py
+      run: python -m pytest tests/
+    - name: Stress Test with stress.py
       run: python stress_test.py
